@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#050608">
+  <meta name="description" content="vX PRIME eSports — competitive Call of Duty Mobile team, matches, live, highlights and recruiting.">
+  <title>vX PRIME — THIS IS OUR GAME.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+
+  <header class="topbar" id="topbar">
+    <a class="brand" href="#home" aria-label="vX PRIME home"><span>vX</span> PRIME</a>
+    <nav class="desktop-nav" aria-label="Navigazione principale">
+      <a href="#home">HOME</a>
+      <a href="#team">TEAM</a>
+      <a href="#matches">MATCH</a>
+      <a href="#live">LIVE</a>
+      <a href="#community">COMMUNITY</a>
+      <a href="#join">JOIN</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="account-btn" id="accountBtn" type="button">ACCEDI</button>
+      <button class="menu-btn" id="menuBtn" type="button" aria-label="Apri menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <nav class="menu-links">
+      <a href="#home">HOME</a>
+      <a href="#team">TEAM</a>
+      <a href="#matches">MATCHES</a>
+      <a href="#live">LIVE</a>
+      <a href="#community">COMMUNITY</a>
+      <a href="#join">JOIN vX</a>
+      <a href="#account">ACCOUNT</a>
+      <a href="#admin" id="adminMenuLink" class="hidden">ADMIN</a>
+    </nav>
+  </div>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="hero-glow glow-a" aria-hidden="true"></div>
+      <div class="hero-glow glow-b" aria-hidden="true"></div>
+
+      <div class="hero-layout">
+        <div class="hero-copy">
+          <div class="eyebrow" id="heroEyebrow">vX PRIME · CALL OF DUTY MOBILE</div>
+          <h1 id="heroTitle">THIS IS<br><span>OUR GAME.</span></h1>
+          <p id="heroSubtitle">Competitive gaming. One team. One identity.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#team">EXPLORE TEAM <b>↗</b></a>
+            <a class="btn ghost" href="#matches">MATCH CENTER <b>→</b></a>
+          </div>
+
+          <div class="hero-mini-stats">
+            <div><strong id="heroPlayers">—</strong><span>ACTIVE</span></div>
+            <div><strong id="heroLive">—</strong><span>LIVE</span></div>
+            <div><strong id="heroWins">—</strong><span>WINS</span></div>
+          </div>
+        </div>
+
+        <aside class="hero-command">
+          <div class="command-top">
+            <span class="signal"><i></i> PRIME NETWORK</span>
+            <span id="heroClock">--:--</span>
+          </div>
+          <div class="command-label">NEXT BATTLE</div>
+          <div id="heroNextMatch" class="hero-match-shell loading-card"></div>
+          <div class="command-foot">
+            <span>COD MOBILE</span>
+            <span>EU · COMPETITIVE</span>
+          </div>
+        </aside>
+      </div>
+
+      <div class="hero-watermark" aria-hidden="true">VX</div>
+    </section>
+
+    <section class="ticker" aria-label="vX PRIME identity">
+      <div class="ticker-track">
+        <span>COMPETE</span><i>✦</i><span>IMPROVE</span><i>✦</i><span>DOMINATE</span><i>✦</i>
+        <span>vX PRIME</span><i>✦</i><span>CALL OF DUTY MOBILE</span><i>✦</i><span>THIS IS OUR GAME</span>
+      </div>
+    </section>
+
+    <section class="section-pad status-section">
+      <div class="status-grid">
+        <div><span class="status-index">01</span><strong id="statPlayers">—</strong><small>ACTIVE PLAYERS</small></div>
+        <div><span class="status-index">02</span><strong id="statLive">—</strong><small>LIVE NOW</small></div>
+        <div><span class="status-index">03</span><strong id="statMatches">—</strong><small>NEXT MATCH</small></div>
+        <div><span class="status-index">04</span><strong id="statHighlights">—</strong><small>HIGHLIGHTS</small></div>
+      </div>
+    </section>
+
+    <section class="section-pad match-section" id="matches">
+      <header class="section-title">
+        <div>
+          <div class="kicker">MATCH CENTER</div>
+          <h2>THE BATTLE<br><span>STARTS HERE.</span></h2>
+        </div>
+        <button class="link-btn" type="button" data-open="matches">VIEW ALL MATCHES <b>↗</b></button>
+      </header>
+
+      <div class="match-stage">
+        <article class="next-match-card loading-card" id="nextMatch"></article>
+        <aside class="recent-panel">
+          <div class="panel-head">
+            <span>RECENT</span>
+            <strong>LAST RESULTS</strong>
+          </div>
+          <div id="recentResults" class="result-list"></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section-pad team-section" id="team">
+      <header class="section-title">
+        <div>
+          <div class="kicker">THE PEOPLE</div>
+          <h2>MEET THE<br><span>PRIME.</span></h2>
+        </div>
+        <button class="link-btn" type="button" data-open="team">FULL ROSTER <b>↗</b></button>
+      </header>
+
+      <div class="team-toolbar">
+        <div class="tabs" id="teamTabs">
+          <button class="active" type="button" data-team="competitive">COMPETITIVE</button>
+          <button type="button" data-team="academy">ACADEMY</button>
+          <button type="button" data-team="staff">STAFF</button>
+          <button type="button" data-team="community">COMMUNITY</button>
+        </div>
+        <span class="team-count" id="teamCount">0 PLAYERS</span>
+      </div>
+
+      <div class="team-grid" id="teamGrid"></div>
+    </section>
+
+    <section class="section-pad live-section" id="live">
+      <header class="section-title compact-title">
+        <div>
+          <div class="kicker">LIVE CENTER</div>
+          <h2>LIVE <span>NOW.</span></h2>
+        </div>
+      </header>
+      <div class="live-grid" id="liveGrid"></div>
+    </section>
+
+    <section class="section-pad community-section" id="community">
+      <div class="community-head">
+        <div>
+          <div class="kicker">PRIME MOMENTS</div>
+          <h2>THE FEED<br><span>NEVER STOPS.</span></h2>
+        </div>
+      </div>
+
+      <div class="highlight-rail" id="highlightRail"></div>
+
+      <div class="community-split">
+        <div>
+          <div class="mini-title"><span>LATEST</span><strong>PRIME NEWS</strong></div>
+          <div class="news-grid" id="newsGrid"></div>
+        </div>
+        <aside class="pulse-panel">
+          <div class="kicker">COMMUNITY PULSE</div>
+          <h3>ALWAYS MOVING.</h3>
+          <div id="pulseList" class="pulse-list"></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section-pad join-section" id="join">
+      <div class="join-glow" aria-hidden="true"></div>
+      <div class="kicker">JOIN THE PRIME</div>
+      <h2 id="joinTitle">YOU DON'T JOIN PRIME.<br><span>YOU EARN IT.</span></h2>
+      <p>Competitive player, Academy, creator or staff: scegli il tuo percorso, registrati e invia la candidatura.</p>
+      <button class="btn primary" id="applyBtn" type="button">START APPLICATION <b>↗</b></button>
+    </section>
+  </main>
+
+  <footer>
+    <a class="brand" href="#home"><span>vX</span> PRIME</a>
+    <span>© <b id="year"></b> · CALL OF DUTY MOBILE ESPORTS</span>
+    <span>THIS IS OUR GAME.</span>
+  </footer>
+
+  <div class="modal-shell" id="modalShell" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal></div>
+    <aside class="modal">
+      <button class="modal-close" type="button" data-close-modal aria-label="Chiudi">×</button>
+      <div id="modalContent"></div>
+    </aside>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>

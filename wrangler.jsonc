@@ -1,0 +1,15 @@
+{
+  "name": "vx-prime-esports",
+  "main": "worker-direct.mjs",
+  "compatibility_date": "2026-09-23",
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS"
+  },
+  "services": [
+    {
+      "binding": "GAME_SERVICE",
+      "service": "vx-prime-game"
+    }
+  ]
+}
